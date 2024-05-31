@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mt-4 ml-4">
+    <h2 class="h2 mb-0 mt-2 text-dark font-weight-bold">Documentation</h2>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+
+    <div class="col-xl-12 col-lg-12">
+      <div class="card shadow m-4">                                
+        <!-- Card Body -->
+        <div class="card-body">
+          <div>
+            <h2 class="h3 text-dark font-weight-bold">
+              Full Documentation
+            </h3>
+            <p>
+              Learn more about MassCCS at his respective documentation site:
+            </p>                                    
+            <ul class="list-group ml-3">
+              <li><a href="https://massccs.readthedocs.io/en/latest/">massccs doc</a></li>
+            </ul>
+            <br>
+            <h3 class="h5 text-dark font-weight-bold">
+              Example:
+            </h3>
+            <ul class="list-group ml-3">
+              <li><a href="https://massccs.readthedocs.io/en/latest/getting_started/calculation.html">massccs ubiquitine CCS calculation</a></li>
+            </ul>            
+            <br>                        
+            <h3 class="h5 text-dark font-weight-bold">
+              Who paid for this?
+            </h3>
+            <p>This software is made possible by generous support from the <a href=https://fapesp.br><b>Sao Paulo Research Foundation (FAPESP)</b></a> through Grants 2012/24750-6, 2013/08293-7, 
+              2016/04963-6 and 2021/03224-3 and the <a href=https://cepid.fapesp.br/center-for-computational-engineering-and-sciences><b>Center for Computing in Engineering & Sciences (CEPID)</b></a> project.</p>
+            <p>Please support the continued development of <a href="https://github.com/cces-cepid/massccs"><b>MassCCS</b></a> project by proper citation in your publication.</p>                                    
+          </div>
+        </div>
+      </div>
+    </div>     
+  </div>
+  <!-- End Content Row -->
+                      
+</div>
+<!-- End page content -->    
+{% endblock %}

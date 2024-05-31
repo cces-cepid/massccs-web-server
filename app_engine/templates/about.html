@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mt-4 ml-4">
+      <h2 class="h2 mb-0 mt-2 text-dark font-weight-bold">About</h2>
+  </div>
+  
+  <!-- Content Row -->
+  <div class="row">
+
+    <div class="col-xl-12 col-lg-12">
+      <div class="card shadow m-4">                                
+        <!-- Card Body -->
+        <div class="card-body">
+          <div>
+            <h3 class="h2 text-dark font-weight-bold">
+              Build Information
+            </h3>
+            <p> This version of the MassCCS web service currently uses the following versions of each respective software:</p>            
+            <p class="h5 text-dark font-weight-bold">MassCCS</p>                                    
+            <ul class="list-group ml-3">
+              <li><a href="https://github.com/cces-cepid/massccs">github</a></li>
+            </ul>
+            <!--
+            <p class="h5 text-dark font-weight-bold">Backend</p>                                        
+            <ul class="list-group ml-3">
+              <li><a href="https://github.com/cces-cepid/massccs">github</a></li>
+            </ul>
+            <p class="h5 text-dark font-weight-bold">Frontend</p>                                        
+            <ul class="list-group ml-3">
+              <li><a href="https://github.com/cces-cepid/massccs">github</a></li>
+            </ul>    
+            -->
+            <br>
+            <h3 class="h3 text-dark font-weight-bold">
+              Citation(s)
+            </h3>
+            <p>Please cite the following when using this software in a publication:</p>
+            <ul class="list-group ml-3">
+              <li>
+                <a href="https://doi.org/10.1021/acs.jcim.3c00405">MassCCS: A High-Performance Collision Cross-Section Software for Large Macromolecular Assemblies</a> <br>                                           
+                <p>S. Cajahuaringa, D. L. Z. Caetano, L. N. Zanotto, G. Araujo, and M. S. Skaf <br>                                           
+                Journal of Chemical Information and Modeling 2023 63 (11), 3557-3566 <br>
+                DOI: 10.1021/acs.jcim.3c00405</p>
+              </li>
+              <li>
+                <a href="https://doi.org/10.1109/SBAC-PAD55451.2022.00026">Ion-Molecule Collision Cross-Section Simulation using Linked-cell and Trajectory Parallelization</a> <br>
+                <p>S. Cajahuaringa, L. N. Zanotto, D. L. Z. Caetano, S. Rigo, H. Yviquel, M. S. Skaf, and G. Araujo <br>
+                2022 IEEE 34th International Symposium on Computer Architecture and High Performance Computing (SBAC-PAD)<br>
+                DOI: 10.1109/SBAC-PAD55451.2022.00026 </p>
+              </li>
+            </ul>
+            <h4 class="h4 text-dark font-weight-bold">
+              Contacts
+            </h4>  
+            <ul class="list-group ml-3">
+              <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=samuelcm@unicamp.br">samuelcm@unicamp.br</a></li>
+              <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=skaf@unicamp.br">skaf@unicamp.br</a></li>
+              <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=guido@unicamp.br">guido@unicamp.br</a></li>
+            </ul>    
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div>
+  <!-- End Content Row -->                      
+</div>
+<!-- End page Content -->    
+{% endblock %}

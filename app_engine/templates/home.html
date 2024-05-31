@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mt-4 ml-4">
+    <h2 class="h2 mb-0 mt-2 text-dark font-weight-bold">Home</h2>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+    
+    <div class="col-xl-12 col-lg-12">
+      <div class="card shadow m-4">                                
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="chart-area">
+            <h2 class="h2 text-dark font-weight-bold">
+              MassCSS: A high performance collision cross-section software
+            </h2>
+            <br>
+            <p>
+              MassCCS is an efficient parallel software for calculating Collision Cross Section (CCS) under 
+              the trajectory method (TM) for any macromolecular structure regardless of its size, shape 
+              and surface rugosity, without significant loss of accuracy or performance.  
+            </p>
+            <p>                                                                                                                                      
+              Getting Started: 
+            </p>
+            <a href="/configuration" class="btn btn-primary">run MassCCS</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- End Content Row -->
+                      
+</div>
+<!-- End Page Content -->
+{% endblock %}

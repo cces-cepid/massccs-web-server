@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mt-4 ml-4">
+      <h2 class="h2 mb-0 mt-2 text-dark font-weight-bold">MassCCS Job Configuration</h2>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+  
+    <div class="col-xl-12 col-lg-12">
+      <div class="card shadow m-4">                                
+        <!-- Card Body -->
+        <div class="card-body">
+          <div>
+            <div class="row">
+              <div class="col text-secondary">                                            
+                <span class="badge rounded-circle border border-secondary">1</span>                                                                                   
+                MassCCS Configuration
+              </div>
+              <div class="col text-primary border-bottom-primary">                              
+                <span class="badge rounded-circle border border-primary">2</span>
+                <span>MassCCS Result</span> 
+              </div>
+            </div>
+            <br>
+            {% if success == 1 %}                                    
+            <p class="h6 text-dark">Job ID:</p>
+            <p class="h5 text-dark font-weight-bold"> {{ jobid }} </p>
+            <br>
+            <p class="h6 text-dark">Collision Cross-Section:</p>
+            <p class="h5 text-dark font-weight-bold"> ( {{ ccs }}  &plusmn; {{ err }} ) <span class="h6 text-dark font-weight-bold">&#8491;<sup>2</sup></span></p>
+            <br>
+            <p class="h6 text-dark">Time execution:</p>
+            <p class="h5 text-dark font-weight-bold"> {{ time }} s</p>
+            <br> 
+            <p class="h6 text-dark">MassCCS Output File:</p>
+            <a href="{% url 'logfile' jobid %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> massccs.log </a>
+	    <p><span class="text-danger">*</span> massccs.log file will be retained for 24 hours.</p>
+            {% elif success == 0 %}
+            <p class="h6 text-dark">Job ID:</p>
+            <p class="h5 text-dark font-weight-bold"> {{ jobid }} </p>
+            <br>
+            <p class="h6 text-dark">Error:</p>
+            <p class="h5 text-dark font-weight-bold"> {{ err }} </p>
+            <p class="h6 text-dark">MassCCS Output File:</p>
+            <a href="{% url 'logfile' jobid %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> massccs.log </a>
+            <p><span class="text-danger">*</span> massccs.log file will be retained for 24 hours.</p>
+            {% endif %}
+
+            {% if notfile == 1 %}
+            <p class="h6 text-dark">Job ID:</p>
+            <p class="h5 text-dark font-weight-bold"> {{ jobid }} </p>
+            <br>
+            <p class="h6 text-dark">MassCCS Output File: </p>  <p class="h5 text-dark font-weight-bold"> {{ text}} </p> 
+            <br>
+            <p class="h6 text-dark">Not found in our database, passed of expiration date.</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Content Row -->
+                      
+</div>
+<!-- End page content -->    
+{% endblock %}

@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>MassCCS</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'img/logo_cces.png' %}">
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="https://cces.unicamp.br/">
+        <div class="sidebar-brand-icon">
+          <img src="{%static 'img/logo_sigla_grande_branco.png' %}" style="height: 64px; object-fit: cover;" id="img_logo">                
+        </div>                            
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-2">      
+
+      <!-- Nav Item - Home -->
+      <li class="nav-item">
+        <a class="nav-link" href="/">
+          <i class="fas fa-fw fa-home"></i>                
+          <span style="font-size:16px">Home</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/configuration">
+          <i class="fas fa-fw fa-cog"></i>               
+          <span style="font-size:16px">run MassCCS</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/about">
+          <i class="fas fa-fw fa-users"></i>                
+          <span style="font-size:16px">About</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/doc">
+          <i class="fas fa-fw fa-folder"></i>                
+          <span style="font-size:16px">Documentation</span>
+        </a>
+      </li>            
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">    
+
+        <!-- Main Content -->
+        <div id="content">
+
+          {% block content %}
+          {% endblock %}
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span class="h6">Using this software for a publication? Find the proper citation <a href="https://doi.org/10.1021/acs.jcim.3c00405">here</a>.
+                <br>
+                Found a bug? Report any issues to the respective GitHub project.</span>
+              <a class="nav-link" href="https://github.com/cces-cepid/massccs">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+
+  <script>
+    function updateFileName(input) {
+      var fileName = input.files[0].name;
+      document.getElementById('file-name').textContent = fileName;
+    }
+  </script>
+
+  <script>
+    function submitJob(){     
+      // Create span elements for the spinner
+      var spinnerIcon = document.createElement('span');
+      spinnerIcon.className = 'spinner-border spinner-border-sm m-1';
+
+      var statusText = document.createElement('span');
+      statusText.setAttribute('role', 'status');
+      statusText.textContent = ' Running Job...';
+
+      // Get the button element
+      var submitButton = document.getElementById('submitJob');
+      submitButton.disabled = true; 
+      submitButton.innerText = '';
+
+      // Append the spinner and status text to the button
+      submitButton.appendChild(spinnerIcon);
+      submitButton.appendChild(statusText);
+
+      // submit form 
+      document.getElementById('myForm').submit();
+    }
+    const form = document.getElementById('myForm'); 
+    form.addEventListener('submit',submitJob);      
+  </script>  
+
+  <script>
+    var isSmall = true;
+
+    function changeLogoSize(){
+      event.preventDefault();
+
+      // Get the img element
+      var img_logo = document.getElementById('img_logo');
+      // Get the spans 
+      var side_bar = document.getElementById('accordionSidebar');
+      var spans = side_bar.querySelectorAll('span');      
+      console.log(spans);
+      if (isSmall) {
+        img_logo.style.height = '32px';
+        spans.forEach(function(span) {
+          span.style.fontSize = '10px';
+        });      
+      } else {
+        img_logo.style.height = '64px';
+        spans.forEach(function(span) {
+          span.style.fontSize = '16px';
+        });        
+      }
+
+      isSmall = !isSmall;
+    }
+    
+    document.getElementById('sidebarToggle').addEventListener('click',changeLogoSize);        
+  </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var input = document.getElementById('moleculeFile');
+    input.addEventListener('change', function() {
+      if (!valideExtensionFile(this)) {
+        this.value = ''; 
+      }
+    });
+  });
+  
+  function valideExtensionFile(input) {
+    var file = input.files[0];
+      
+    if (file) {
+      var extensionAvailable = ['.pqr', '.xyz'];
+      var extension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+
+      if (extensionAvailable.indexOf(extension) === -1) {
+        alert('Invalid extension. Please, select file with extension .pqr or .xyz');
+        document.getElementById('submitJob').disabled = true;
+        return false;
+      } else {
+        document.getElementById('submitJob').disabled = false;
+      }
+    }
+    return true;
+  }
+  </script>
+  
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mt-4 ml-4">
+    <h2 class="h2 mb-0 mt-2 text-dark font-weight-bold">MassCCS Job Configuration</h2>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+
+    <div class="col-xl-12 col-lg-12">
+      <div class="card shadow m-4">                                
+        <!-- Card Body -->
+        <div class="card-body">
+          <div>
+            <div class="row">
+              <div class="col text-primary border-bottom-primary">                                            
+                <span class="badge rounded-circle border border-primary m-1">1</span>
+                MassCCS Configuration
+              </div>
+              <div class="col text-secondary">                              
+                <span class="badge rounded-circle border border-secondary m-1">2</span>
+                <span>Job Result</span> 
+              </div>
+            </div>
+            <br>  
+
+            <form id="myForm" action="{% url 'configuration' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %} 
+              <!-- upload file--> 
+              <p class="h5 text-dark font-weight-bold">Input Molecule File</p>              
+              <label for="moleculeFile" class="btn btn-sm btn-primary shadow-sm">
+                <i class="fas fa-upload fa-sm text-white-50"></i> Upload File
+              </label>                                    
+              <input id="moleculeFile" type="file" required name="moleculeFile" style="display: none;" onchange="updateFileName(this);">                                                                                                                                 
+              <span id="file-name">No file selected</span> 
+              <p id="warning-file"><span class="text-danger">*</span> Please upload a file in PQR or XYZ or XYZ-Q format</p>
+
+              <!-- gas type --> 
+              <p class="h5 text-dark font-weight-bold">Buffer Gas Options</p>                                                                               
+              <input type="radio" id="He" name="buffergas" value="He" checked>
+              <label for="He">He</label>
+              <input type="radio" id="N2" name="buffergas" value="N2">
+              <label for="N2">N<sub>2</sub></label>                                        
+              <p><span class="text-danger">*</span> Please choose a buffer gas option</p>
+              
+              <!-- tempearture -->
+              <label for="Temperature" class="h5 text-dark font-weight-bold">Temperature (K)</label>
+              <input type="number" style="width: 80px;" id="Temperature" name="temperature" step=any value="298.0"> 
+                
+              <br>
+              <!-- seed --> 
+              <label for="Seed" class="h5 text-dark font-weight-bold">Seed</label>
+              <input type="number" style="width: 80px;" id="Seed" name="seed" step=1 min="1" required value="2104"> 
+              <p><span class="text-danger">*</span> Please insert a interger seed</p>
+              <br>
+              <!-- submit -->                          
+              <button type="submit" class="btn btn-success" id="submitJob">Start Job</button>                                    
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>          
+{% endblock %}
+
+
